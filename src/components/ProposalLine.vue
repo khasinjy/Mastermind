@@ -2,10 +2,11 @@
  <span class="d-inline-flex my-3">
     <p class="font-weight-medium"> {{ index + 1 }} </p>
     <v-divider vertical class="mx-2"></v-divider>
-    <div v-for="(color, indexDiamond) in proposal" :key="indexDiamond"  :class="`diamond${indexDiamond}`">
+    <div v-for="(color, indexDiamond) in proposalValue" :key="indexDiamond"  :class="`diamond${indexDiamond}`">
               <v-icon
                 large
                 :color="color"
+                @click="erase(indexDiamond)"
               >
                 mdi-diamond
               </v-icon>
@@ -43,15 +44,23 @@ import myGame from '../mixins/myGame';
 export default {
   components: { CorrectionProposal },
   props:["soluce", "index", "proposal", "currentProposalIndex"],
-  computed:{
-    disabledValidation(){
-      return this.proposal.includes("grey");
+  data(){
+    return {
+      proposalValue: this.proposal
     }
   },
-  methods:{
+  computed:{
+    disabledValidation(){
+      return this.proposalValue.includes("grey");
+    }
+  },
+  methods:{  
+    erase(index){
+      this.proposalValue[index] = "grey";
+    },
     check(){
       //TODO ecran fin de jeu
-      if(JSON.stringify(this.proposal) == JSON.stringify(this.soluce)) {
+      if(JSON.stringify(this.proposalValue) == JSON.stringify(this.soluce)) {
         this.$emit("endGame", "win");
         alert("gagne");
 
