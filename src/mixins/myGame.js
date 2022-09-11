@@ -3,7 +3,7 @@ const myGame = {
         return{
             colors: ['brown', 'pink', 'orange', 'yellow', 'blue', 'purple'],
             numberOfSoluce: 4,
-            maxTries: 3,
+            maxTries: 10,
         }
     }
 }
