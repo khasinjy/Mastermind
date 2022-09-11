@@ -1,17 +1,16 @@
 <template>
- <span class="d-inline-flex my-3">
-    <p class="font-weight-medium"> {{ index + 1 }} </p>
-    <v-divider vertical class="mx-2"></v-divider>
-    <div v-for="(color, indexDiamond) in proposalValue" :key="indexDiamond"  :class="`diamond${indexDiamond}`">
-              <v-icon
-                large
-                :color="color"
-                @click="erase(indexDiamond)"
-              >
-                mdi-diamond
-              </v-icon>
-    </div>
-    <v-divider vertical class="mx-2"></v-divider>
+ <v-row >
+    <v-col cols="1">
+      <p class="font-weight-medium"> {{ index + 1 }} </p>
+    </v-col>
+    <v-col cols="5">
+      <span v-for="(color, indexDiamond) in proposalValue" :key="indexDiamond"  :class="`diamond${indexDiamond}`">
+        <v-icon large :color="color" @click="erase(indexDiamond)">
+          mdi-diamond
+        </v-icon>
+      </span>
+    </v-col>
+    <v-col cols="4">
     <div :class="`validation${index + 1}`">
       <v-btn
         v-if="index == currentProposalIndex" 
@@ -31,7 +30,8 @@
       >
       </correction-proposal>
     </div>
-  </span>
+    </v-col>
+  </v-row>
 </template>
 
 <style>
@@ -59,7 +59,7 @@ export default {
       this.proposalValue[index] = "grey";
     },
     check(){
-      //TODO ecran fin de jeu
+      //TODO ecran fin de jeu: dialog component vuetify
       if(JSON.stringify(this.proposalValue) == JSON.stringify(this.soluce)) {
         this.$emit("endGame", "win");
         alert("gagne");

@@ -1,6 +1,6 @@
 <template>
   <span>
-    <span v-for="(value, index) in correction" :key="index"  :class="`correctionProposal${indexProposal} d-inline-flex`">
+    <span v-for="(value, index) in correction" :key="index"  :class="`correctionProposal${indexProposal}`">
         <v-icon size="small" :color="getColor(value)"> mdi-checkbox-blank-circle </v-icon>
     </span>
   </span>

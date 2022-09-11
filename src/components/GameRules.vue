@@ -1,7 +1,7 @@
 <template>
   <div class="rules">
-    <h1>{{ title }}</h1>
-    <p>{{ msg }}</p>
+    <h3>{{ title }}</h3>
+    <p class="text-justify">{{ msg }}</p>
   </div>
 </template>
 
